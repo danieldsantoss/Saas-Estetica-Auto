@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | {{ cfg.nome_sistema or cfg.nome or "AutoDetail Manager" }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="loginBody" data-theme="{{ cfg.tema or 'light' }}" style="--primary: {{ cfg.cor_principal or '#3b82f6' }}; --primary-dark: {{ cfg.cor_principal or '#2563eb' }};">
+  <form class="loginCard" method="post">
+    <div class="logoMark loginLogo">{% if cfg.logo %}<img src="/uploads/logos/{{ cfg.logo }}" alt="Logo">{% else %}AD{% endif %}</div>
+    <h1>{{ cfg.nome_sistema or 'AutoDetail Manager' }}</h1>
+    <p class="muted">Acesso protegido para administrar {{ cfg.nome or 'sua estética automotiva' }}.</p>
+    {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+    <input name="username" placeholder="Usuário" required autofocus>
+    <input name="password" type="password" placeholder="Senha" required>
+    <button class="goldBtn">Entrar</button>
+    <small class="muted">Primeiro acesso: usuário <b>admin</b> / senha <b>admin123</b>. Altere em Configurações.</small>
+  </form>
+</body>
+</html>
